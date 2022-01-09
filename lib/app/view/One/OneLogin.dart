@@ -240,24 +240,44 @@ class PasswordInput extends StatefulWidget {
 }
 
 class _PasswordInputState extends State<PasswordInput> {
+  var icon_eye = Icons.remove_red_eye;
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: 20, right: 20, top: 20),
-      padding: EdgeInsets.only(left: 30, right: 15),
+      padding: EdgeInsets.only(left: 30, right: 20),
       height: 65,
       decoration: BoxDecoration(
         color: Color(0xFFEEEEEE),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
-        child: TextField(
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: 'Password',
+          child: Row(
+        children: [
+          Expanded(
+            flex: 9,
+            child: TextField(
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: 'Password',
+              ),
+            ),
           ),
-        ),
-      ),
+          Expanded(
+              flex: 1,
+              child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      icon_eye == Icons.remove_red_eye
+                          ? icon_eye = Icons.remove_red_eye_outlined
+                          : icon_eye = Icons.remove_red_eye;
+                    });
+                  },
+                  child: Icon(
+                    icon_eye,
+                  ))),
+        ],
+      )),
     );
   }
 }
