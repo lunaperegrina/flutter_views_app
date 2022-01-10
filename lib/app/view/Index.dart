@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class Index extends StatefulWidget {
@@ -12,14 +13,22 @@ class _IndexState extends State<Index> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter Examples'),
-      ),
-      drawer: Drawer(
-        child: Column(
-          children: [],
+        title: Center(
+          child: Text(
+            'Flutter UI',
+            style: TextStyle(
+              color: Colors.black,
+            ),
+            textAlign: TextAlign.center,
+          ),
         ),
+        backgroundColor: Colors.white,
+        shadowColor: Color(0xFFFFFFFF),
       ),
+      // drawer: Drawer(),
+      drawerDragStartBehavior: DragStartBehavior.start,
       body: Container(
+        margin: EdgeInsets.only(top: 5),
         child: Column(
           children: [
             Row(
@@ -30,35 +39,21 @@ class _IndexState extends State<Index> {
                     onTap: () {
                       Navigator.pushNamed(context, "/OneRegister");
                     },
-                    child: Card(
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        height: 150,
-                        child: Center(
-                            child: Text(
-                          'Register',
-                          style: TextStyle(fontSize: 24),
-                        )),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, "/OneRegister");
-                    },
-                    child: Card(
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        height: 150,
-                        child: Center(
-                            child: Text(
-                          'Register',
-                          style: TextStyle(fontSize: 24),
-                        )),
-                      ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(10)),
+                      padding: EdgeInsets.all(5),
+                      margin: EdgeInsets.all(5),
+                      height: 120,
+                      child: Center(
+                          child: Text(
+                        'Login',
+                        style: TextStyle(
+                          fontSize: 24,
+                          color: Colors.white,
+                        ),
+                      )),
                     ),
                   ),
                 ),

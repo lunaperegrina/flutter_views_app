@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 
 class OneRegister extends StatefulWidget {
   const OneRegister({Key? key}) : super(key: key);
@@ -11,42 +12,52 @@ class _OneRegisterState extends State<OneRegister> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Column(
-        children: [
-          Expanded(
-            flex: 10,
-            child: Container(
-                margin:
-                    EdgeInsets.only(top: 35, left: 10, right: 10, bottom: 10),
-                decoration: BoxDecoration(
-                    color: Color(0xFFD99AFD),
-                    borderRadius: BorderRadius.circular(20))),
+      child: Stack(children: [
+        Image.asset(
+          "images/gradiante-flutter.jpg",
+        ),
+        BackdropFilter(
+          filter: ImageFilter.blur(
+            sigmaX: 20,
+            sigmaY: 20,
           ),
-          Divider(),
-          Expanded(
-              flex: 7,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  TextRegisterSignin(),
-                  Container(
-                      margin: EdgeInsets.only(left: 10, right: 10),
-                      decoration: BoxDecoration(
-                          color: Color(0xffE9ECF4),
-                          borderRadius: BorderRadius.circular(18)),
-                      height: 70,
-                      child: RegisterLogin()),
-                ],
-              )),
-          // BackdropFilter(
-          //   filter: ImageFilter.blur(
-          //     sigmaX: 200.0,
-          //     sigmaY: 200.0,
-          //   ),
-          //   child: Container(),
-          // )
-        ],
-      ),
+        ),
+        Column(
+          children: [
+            Expanded(
+              flex: 10,
+              child: Container(
+                  margin:
+                      EdgeInsets.only(top: 35, left: 10, right: 10, bottom: 10),
+                  decoration: BoxDecoration(
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                            blurRadius: 50,
+                            color: Color(0xffE9C3FF),
+                            offset: Offset(0, 0))
+                      ],
+                      color: Color(0xFFD99AFD),
+                      borderRadius: BorderRadius.circular(20))),
+            ),
+            Divider(),
+            Expanded(
+                flex: 7,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    TextRegisterSignin(),
+                    Container(
+                        margin: EdgeInsets.only(left: 10, right: 10),
+                        decoration: BoxDecoration(
+                            color: Color(0xffE9ECF4),
+                            borderRadius: BorderRadius.circular(12)),
+                        height: 70,
+                        child: RegisterLogin()),
+                  ],
+                )),
+          ],
+        ),
+      ]),
     );
   }
 }
@@ -72,7 +83,7 @@ class _RegisterLoginState extends State<RegisterLogin> {
               width: 200,
               decoration: BoxDecoration(
                   color: Color(0xFFFFFFFF),
-                  borderRadius: BorderRadius.circular(20)),
+                  borderRadius: BorderRadius.circular(12)),
               child: Center(
                 child: Text(
                   'Register',
@@ -93,7 +104,7 @@ class _RegisterLoginState extends State<RegisterLogin> {
                 // width: 200,
                 decoration: BoxDecoration(
                     // color: Color(0xFFFFFFFF),
-                    borderRadius: BorderRadius.circular(20)),
+                    borderRadius: BorderRadius.circular(12)),
                 child: Center(
                   child: Text(
                     'Sign In',

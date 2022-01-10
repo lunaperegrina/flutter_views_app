@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 
 class OneLogin extends StatefulWidget {
   const OneLogin({Key? key}) : super(key: key);
@@ -21,6 +22,7 @@ class _OneLoginState extends State<OneLogin> {
           LoginInput(),
           PasswordInput(),
           RecoveryPassword(),
+
           GestureDetector(
             onTap: () {},
             child: Container(
@@ -53,40 +55,9 @@ class _OneLoginState extends State<OneLogin> {
           // ),
           OrContinueWith(),
           Container(
-            margin: EdgeInsets.only(left: 10, right: 10),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                      margin: EdgeInsets.all(10),
-                      height: 80,
-                      decoration: BoxDecoration(
-                          color: Color(0xffeeeeee),
-                          borderRadius: BorderRadius.circular(10))),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                      margin: EdgeInsets.all(10),
-                      height: 80,
-                      decoration: BoxDecoration(
-                          color: Color(0xffeeeeee),
-                          borderRadius: BorderRadius.circular(10))),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                      margin: EdgeInsets.all(10),
-                      height: 80,
-                      decoration: BoxDecoration(
-                          color: Color(0xffeeeeee),
-                          borderRadius: BorderRadius.circular(10))),
-                ),
-              ],
-            ),
-          ),
-          NotMemberRegisterNow()
+              margin: EdgeInsets.only(left: 10, right: 10),
+              child: SocialLogin()),
+          NotMemberRegisterNow(),
         ],
       ),
     ));
@@ -196,7 +167,7 @@ class _OrContinueWithState extends State<OrContinueWith> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 20, bottom: 20),
+      margin: EdgeInsets.only(top: 50, bottom: 20),
       alignment: Alignment.center,
       child: Text(
         'Or continue with',
@@ -278,6 +249,107 @@ class _PasswordInputState extends State<PasswordInput> {
                   ))),
         ],
       )),
+    );
+  }
+}
+
+class SocialLogin extends StatefulWidget {
+  const SocialLogin({Key? key}) : super(key: key);
+
+  @override
+  _SocialLoginState createState() => _SocialLoginState();
+}
+
+class _SocialLoginState extends State<SocialLogin> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: Container(
+            margin: EdgeInsets.all(10),
+            height: 80,
+            decoration: BoxDecoration(
+              color: Color(0xffeeeeee),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  blurRadius: 20,
+                  color: Color(0x99DDDDDD),
+                  offset: Offset(0, 0),
+                )
+              ],
+            ),
+            child: Center(
+              child: Container(
+                height: 60,
+                width: 60,
+                child: Image.asset(
+                  'images/logo-g.png',
+                  width: 10,
+                ),
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Container(
+            margin: EdgeInsets.all(10),
+            height: 80,
+            decoration: BoxDecoration(
+              color: Color(0xffeeeeee),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  blurRadius: 20,
+                  color: Color(0x99DDDDDD),
+                  offset: Offset(0, 0),
+                )
+              ],
+            ),
+            child: Center(
+              child: Container(
+                height: 50,
+                width: 50,
+                child: Image.asset(
+                  'images/logo-facebook.png',
+                  width: 10,
+                ),
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Container(
+            margin: EdgeInsets.all(10),
+            height: 80,
+            decoration: BoxDecoration(
+              color: Color(0xffeeeeee),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  blurRadius: 20,
+                  color: Color(0x99DDDDDD),
+                  offset: Offset(0, 0),
+                )
+              ],
+            ),
+            child: Center(
+              child: Container(
+                height: 50,
+                width: 50,
+                child: Image.asset(
+                  'images/logo-apple.png',
+                  width: 10,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
