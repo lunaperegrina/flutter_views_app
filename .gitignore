@@ -40,6 +40,7 @@
 /packages/flutter/coverage/
 version
 analysis_benchmark.json
+3D
 
 # packages file containing multi-root paths
 .packages.generated
@@ -188,3 +189,5 @@ lib/generated_plugin_registrant.dart
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 
 # End of https://www.toptal.com/developers/gitignore/api/flutter
+*.blend
+*.blend1

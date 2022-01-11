@@ -13,20 +13,22 @@ class _OneLoginState extends State<OneLogin> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 80,
-          ),
-          HelloAgain(),
-          LoginInput(),
-          PasswordInput(),
-          RecoveryPassword(),
-
-          GestureDetector(
-            onTap: () {},
-            child: Container(
-              decoration: BoxDecoration(
+      physics: const NeverScrollableScrollPhysics(),
+      child: Stack(children: [
+        FiltroImagem(),
+        Column(
+          children: [
+            SizedBox(
+              height: 80,
+            ),
+            HelloAgain(),
+            LoginInput(),
+            PasswordInput(),
+            RecoveryPassword(),
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                decoration: BoxDecoration(
                   color: Color(0xffD99AFD),
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: <BoxShadow>[
@@ -34,32 +36,34 @@ class _OneLoginState extends State<OneLogin> {
                         blurRadius: 30,
                         color: Color(0xffE9C3FF),
                         offset: Offset(0, 6))
-                  ]),
-              height: 60,
-              width: 350,
-              child: Center(
-                child: Text(
-                  'Sign In',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white),
+                  ],
+                ),
+                height: 60,
+                width: 350,
+                child: Center(
+                  child: Text(
+                    'Sign In',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white),
+                  ),
                 ),
               ),
             ),
-          ),
-          // ElevatedButton(
-          //   onPressed: () {},
-          //   child: Text('Sign In'),
-          //   style: ButtonStyle(),
-          // ),
-          OrContinueWith(),
-          Container(
-              margin: EdgeInsets.only(left: 10, right: 10),
-              child: SocialLogin()),
-          NotMemberRegisterNow(),
-        ],
-      ),
+            // ElevatedButton(
+            //   onPressed: () {},
+            //   child: Text('Sign In'),
+            //   style: ButtonStyle(),
+            // ),
+            OrContinueWith(),
+            Container(
+                margin: EdgeInsets.only(left: 10, right: 10),
+                child: SocialLogin()),
+            NotMemberRegisterNow(),
+          ],
+        ),
+      ]),
     ));
   }
 }
@@ -113,7 +117,7 @@ class _LoginInputState extends State<LoginInput> {
             padding: EdgeInsets.only(left: 30, right: 30),
             height: 65,
             decoration: BoxDecoration(
-                color: Color(0xFFEEEEEE),
+                color: Color(0xFFFFFFFF),
                 borderRadius: BorderRadius.circular(10)),
             child: Center(
               child: TextField(
@@ -219,7 +223,7 @@ class _PasswordInputState extends State<PasswordInput> {
       padding: EdgeInsets.only(left: 30, right: 20),
       height: 65,
       decoration: BoxDecoration(
-        color: Color(0xFFEEEEEE),
+        color: Color(0xFFFFFFFF),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
@@ -228,6 +232,7 @@ class _PasswordInputState extends State<PasswordInput> {
           Expanded(
             flex: 9,
             child: TextField(
+              obscureText: true,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: 'Password',
@@ -244,8 +249,10 @@ class _PasswordInputState extends State<PasswordInput> {
                           : icon_eye = Icons.remove_red_eye;
                     });
                   },
-                  child: Icon(
-                    icon_eye,
+                  child: Container(
+                    child: Icon(
+                      icon_eye,
+                    ),
                   ))),
         ],
       )),
@@ -261,6 +268,8 @@ class SocialLogin extends StatefulWidget {
 }
 
 class _SocialLoginState extends State<SocialLogin> {
+  var corPadraoSocial = Color(0xFFFFFFFF);
+  var corPadraoSocialSombra = Color(0xFFEEEEEE);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -271,12 +280,12 @@ class _SocialLoginState extends State<SocialLogin> {
             margin: EdgeInsets.all(10),
             height: 80,
             decoration: BoxDecoration(
-              color: Color(0xffeeeeee),
+              color: corPadraoSocial,
               borderRadius: BorderRadius.circular(10),
               boxShadow: <BoxShadow>[
                 BoxShadow(
                   blurRadius: 20,
-                  color: Color(0x99DDDDDD),
+                  color: corPadraoSocialSombra,
                   offset: Offset(0, 0),
                 )
               ],
@@ -299,12 +308,12 @@ class _SocialLoginState extends State<SocialLogin> {
             margin: EdgeInsets.all(10),
             height: 80,
             decoration: BoxDecoration(
-              color: Color(0xffeeeeee),
+              color: corPadraoSocial,
               borderRadius: BorderRadius.circular(10),
               boxShadow: <BoxShadow>[
                 BoxShadow(
                   blurRadius: 20,
-                  color: Color(0x99DDDDDD),
+                  color: corPadraoSocialSombra,
                   offset: Offset(0, 0),
                 )
               ],
@@ -327,12 +336,12 @@ class _SocialLoginState extends State<SocialLogin> {
             margin: EdgeInsets.all(10),
             height: 80,
             decoration: BoxDecoration(
-              color: Color(0xffeeeeee),
+              color: corPadraoSocial,
               borderRadius: BorderRadius.circular(10),
               boxShadow: <BoxShadow>[
                 BoxShadow(
                   blurRadius: 20,
-                  color: Color(0x99DDDDDD),
+                  color: corPadraoSocialSombra,
                   offset: Offset(0, 0),
                 )
               ],
@@ -348,6 +357,59 @@ class _SocialLoginState extends State<SocialLogin> {
               ),
             ),
           ),
+        ),
+      ],
+    );
+  }
+}
+
+class FiltroImagem extends StatefulWidget {
+  const FiltroImagem({Key? key}) : super(key: key);
+
+  @override
+  _FiltroImagemState createState() => _FiltroImagemState();
+}
+
+class _FiltroImagemState extends State<FiltroImagem> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Image.asset(
+          "images/gradiante-flutter.jpg",
+          fit: BoxFit.contain,
+        ),
+        BackdropFilter(
+          blendMode: BlendMode.lighten,
+          filter: ImageFilter.blur(
+            sigmaX: 10000.0,
+            sigmaY: 10000.0,
+          ),
+          child: Container(),
+        ),
+        BackdropFilter(
+          blendMode: BlendMode.lighten,
+          filter: ImageFilter.blur(
+            sigmaX: 10000.0,
+            sigmaY: 10000.0,
+          ),
+          child: Container(),
+        ),
+        BackdropFilter(
+          blendMode: BlendMode.lighten,
+          filter: ImageFilter.blur(
+            sigmaX: 10000.0,
+            sigmaY: 10000.0,
+          ),
+          child: Container(),
+        ),
+        BackdropFilter(
+          // blendMode: BlendMode.luminosity,
+          filter: ImageFilter.blur(
+            sigmaX: 10000.0,
+            sigmaY: 10000.0,
+          ),
+          child: Container(),
         ),
       ],
     );
